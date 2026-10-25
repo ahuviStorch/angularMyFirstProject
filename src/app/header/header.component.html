@@ -25,6 +25,18 @@
 
 <div *ngIf ="isLoggedIn">
     <h2>ברוכים הבאים!</h2>
-  <p>התחברת בהצלחה למערכת. מספר הזיהוי שלך הוא: {{ userId }}</p>
+  
+    <p>התחברת בהצלחה למערכת. מספר הזיהוי שלך הוא: {{ userId }}</p>
+
+    <ul>
+        <li *ngFor="let item of subjects" [ngStyle]="{'color' : item.mark < 60 ? 'red' : 'blue'}">
+            {{item.subject}}
+             {{item.mark >= 60 ? "--past" : "--failed"}}
+        </li>
+    </ul>
+
+    <p>the avg mark is: {{averageMark}}</p>
+
+
 
 </div>
