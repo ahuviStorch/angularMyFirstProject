@@ -1,0 +1,30 @@
+<div *ngIf ="!isLoggedIn"> 
+<h1>{{title}}</h1>
+<input type="text" placeholder="enter your ID" [(ngModel)]="userId">
+
+
+<div class="field">
+    <!-- תיבת סימון מוסתרת: התצוגה היא ✔ / ✘ -->
+    <button type="button"
+            class="check-toggle"
+            role="checkbox"
+            [attr.aria-checked]="isAgreed"
+            [class.checked]="isAgreed"
+            (click)="isAgreed = !isAgreed">
+      {{ isAgreed ? '✔' : '✘' }}
+    </button>
+    <span (click)="isAgreed = !isAgreed">
+      Did you read and approve the regulations?
+    </span>
+  </div>
+
+  <!-- לחצן היכנס (נעול כל עוד תיבת הסימון לא מסומנת) -->
+  <button [disabled]="!isAgreed" (click)="onLogin()">Login</button>
+</div> 
+<!-- is logged in -->
+
+<div *ngIf ="isLoggedIn">
+    <h2>ברוכים הבאים!</h2>
+  <p>התחברת בהצלחה למערכת. מספר הזיהוי שלך הוא: {{ userId }}</p>
+
+</div>
