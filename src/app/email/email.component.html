@@ -1,2 +1,12 @@
-<input type="email" placeholder="You must enter an email address."
- [(ngModel)]="email">
+<input type="email" placeholder="enter your email"
+       [(ngModel)]="email" 
+       (keyup.enter)="submitEmail()" 
+       title="You must enter an email address.">
+
+<button type="button" (click)="appendGmail()" style="margin-right: 5px; cursor: pointer;">
+    @gmail.com
+</button>
+
+<div *ngIf="capturedEmail" style="margin-bottom: 15px; font-weight: bold; color: #333;">
+    כתובת המייל שנקלטה היא: {{ capturedEmail }}
+</div>
